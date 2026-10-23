@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# やることリスト（ToDoアプリ）
 
-## Getting Started
+Next.js（App Router）・TypeScript・Tailwind CSS で作った日本語のToDoリストです。
+タスクはブラウザの localStorage に保存されるため、ブラウザを閉じても残ります。
 
-First, run the development server:
+## 機能
+
+- タスクの追加（空欄では追加できません）
+- チェックボックスで完了・未完了の切り替え
+- 確認ダイアログ付きのタスク削除
+- 操作結果のお知らせ表示
+- localStorage への自動保存（別タブの変更も反映）
+
+## ローカルで動かす
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+ブラウザで http://localhost:3000 を開きます。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+本番ビルドの確認:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm run start
+```
 
-## Learn More
+## 公開（GitHub + Vercel）
 
-To learn more about Next.js, take a look at the following resources:
+1. GitHub にリポジトリを作成し、このプロジェクトを push します。
+2. [Vercel](https://vercel.com/new) で GitHub リポジトリをインポートします。
+3. 設定はそのままで「Deploy」を押せば公開されます（環境変数は不要です）。
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 主なファイル
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `src/app/page.tsx` … トップページ
+- `src/components/TodoApp.tsx` … ToDo画面（追加・切り替え・削除・確認ダイアログ）
+- `src/lib/todo-storage.ts` … localStorage の安全な読み書き
